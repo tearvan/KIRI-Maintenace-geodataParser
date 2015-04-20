@@ -6,11 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.security.InvalidParameterException;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.csv.CSVFormat;
@@ -18,7 +14,7 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 /**
- * Mendefinisikan satu entri pada log KIRI
+ * Membaca CSV / .gz
  * @author PascalAlfadian
  *
  */
@@ -27,11 +23,9 @@ public class CSVReader {
 	{
 	}
 	/**
-	 * Membaca sebuah file (bisa berupa .csv atau .csv.gz) untuk mendapatkan
-	 * daftar {@link CSVReader}nya. LogEntry yang tidak valid akan diabaikan.
+	 * Membaca sebuah file (bisa berupa .csv atau .csv.gz) untuk mendapatkan data yang terdapat di CSV.
 	 * @param filename nama file yang ingin dibaca
-	 * @return daftar log entry.
-	 * banyak atribut sudah dipastikan 5: id, APIKey, date, Action, additionalData
+	 * @return List<CSVRecord>.
 	 */
 	public static List<CSVRecord> readEntriesFromFile(String filename) throws IOException {
 		//init reader (gz or csv)
